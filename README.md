@@ -1,5 +1,5 @@
 # Rsbuild project
-cm0
+
 ## Setup
 
 Install the dependencies:
