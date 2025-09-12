@@ -1,5 +1,5 @@
 <template>
-    <div class="pb-20 bg-surface-0 dark:bg-surface-950">
+    <div class="bg-surface-0 dark:bg-surface-950">
         <div class="bg-surface-900 text-surface-100 py-4 px-6 lg:px-20 flex justify-between items-center flex-wrap">
             <div class="font-bold">🔥 Hot Deals!</div>
             <div class="inline-flex gap-1 items-center">
