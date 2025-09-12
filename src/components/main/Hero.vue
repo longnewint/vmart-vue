@@ -6,7 +6,7 @@
                     <div class="w-full max-w-2xl px-6 py-12 lg:p-12 xl:p-16 text-center lg:text-left">
                         <h1 class="text-4xl xl:text-5xl font-bold text-surface-0 lg:text-surface-900 dark:text-surface-0 mb-6 leading-tight!">
                             <span class="block">Create the screens your</span>
-                            <span class="block text-primary">visitors deserve to see</span>
+                            <span class="block text-secondary">visitors deserve to see</span>
                         </h1>
 
                         <p class="text-surface-0/90 lg:text-surface-700 dark:text-surface-200 text-xl leading-normal mb-8 max-w-xl lg:max-w-none">
@@ -23,7 +23,7 @@
 
             <div class="absolute lg:relative inset-0 lg:inset-auto flex-1">
                 <div class="absolute lg:hidden inset-0 bg-surface-900/60 dark:bg-surface-900/80 z-10" />
-                <img src="https://fqjltiegiezfetthbags.supabase.co/storage/v1/render/image/public/block.images/blocks/hero/hero-1.png" alt="hero-1" class="h-full w-full object-cover xl:[clip-path:polygon(12%_0,100%_0%,100%_100%,0_100%)]" />
+                <img src="./../../assets/grocery.webp" alt="hero-1" class="h-full w-full object-cover xl:[clip-path:polygon(12%_0,100%_0%,100%_100%,0_100%)]" />
             </div>
         </div>
     </div>
