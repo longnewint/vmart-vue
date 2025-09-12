@@ -1,5 +1,7 @@
 <template>
-  <MegaMenu :model="items">
+  <div class="sticky z-1000">
+  <Banner></Banner>
+  <MegaMenu :model="items" class="z-2000">
     <template #start>
       <Button icon="pi pi-shop" label="vMart"></Button>
     </template>
@@ -9,10 +11,10 @@
       <Button>Test</Button>
     </template>
   </MegaMenu>
+  </div>
 </template>
 <script setup>
 import { ref } from "vue";
-import ShoppingCartButton from "./header/ShoppingCartButton.vue";
 
 const items = ref([
   {
