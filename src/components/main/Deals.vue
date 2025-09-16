@@ -1,5 +1,5 @@
 <template>
-  <h1 class="ml-12 mt-3 mb-3 font-semibold text-3xl">Deal of the weeks</h1>
+  <h1 class="ml-12 mt-3 mb-3 font-semibold text-3xl">Deals of the week</h1>
   <Carousel :value="products" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions" circular
     :autoplayInterval="3000">
     <template #item="slotProps">
