@@ -1,8 +1,11 @@
 <template>
   <Hero></Hero>
-  <div class="flex justify-center h-screen">
+  <div class="flex flex-col">
     <div>
-    <Faqs></Faqs>
+      <Deals></Deals>
+    </div>
+    <div class="flex justify-center">
+      <Faqs></Faqs>
     </div>
   </div>
 </template>
