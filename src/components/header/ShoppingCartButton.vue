@@ -1,5 +1,5 @@
 <template>
-  <Button type="button" icon="pi pi-shopping-cart" :badge="itemNumString" badgeSeverity="contrast" variant="outlined" />
+  <Button type="button" icon="pi pi-shopping-cart" severity="contrast" :badge="itemNumString" badgeSeverity="contrast" variant="outlined" />
 </template>
 <script setup>
 import { computed, ref } from "vue";
