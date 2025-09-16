@@ -3,7 +3,7 @@
   <Banner></Banner>
   <MegaMenu :model="items" class="z-2000">
     <template #start>
-      <Button icon="pi pi-shop" label="vMart"></Button>
+      <Button icon="pi pi-shop" label="vMart" ></Button>
     </template>
     <template #end>
       <ModeSwitcherButton></ModeSwitcherButton>
