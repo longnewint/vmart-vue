@@ -24,7 +24,7 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { DealsApi } from "../../core/DealsApi";
+import { DealsApi } from "../../api/DealsApi";
 import img from './../../assets/no_image_available.webp';
 
 
