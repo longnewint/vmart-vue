@@ -6,93 +6,29 @@ export const CategoryApi = {
         items: [
           [
             {
-              items: [{ label: 'Accessories' }, { label: 'Armchair' }, { label: 'Coffee Table' }, { label: 'Couch' }, { label: 'TV Stand' }]
+              items: [{ label: 'Accessories', id: 1 }, { label: 'Armchair', id: 2 }, { label: 'Coffee Table', id: 3 }]
             }
           ],
           [
             {
               label: 'Kitchen',
-              items: [{ label: 'Bar stool' }, { label: 'Chair' }, { label: 'Table' }]
+              items: [{ label: 'Bar stool', id: 4 }, { label: 'Chair', id: 5 }, { label: 'Table', id: 6 }]
             },
             {
               label: 'Bathroom',
-              items: [{ label: 'Accessories' }]
-            }
-          ],
-          [
-            {
-              label: 'Bedroom',
-              items: [{ label: 'Bed' }, { label: 'Chaise lounge' }, { label: 'Cupboard' }, { label: 'Dresser' }, { label: 'Wardrobe' }]
-            }
-          ],
-          [
-            {
-              label: 'Office',
-              items: [{ label: 'Bookcase' }, { label: 'Cabinet' }, { label: 'Chair' }, { label: 'Desk' }, { label: 'Executive Chair' }]
+              items: [{ label: 'Accessories', id: 7 }]
             }
           ]
         ]
       },
       {
-        label: 'Bakery',
-        items: [
-          [
-            {
-              label: 'Computer',
-              items: [{ label: 'Monitor' }, { label: 'Mouse' }, { label: 'Notebook' }, { label: 'Keyboard' }, { label: 'Printer' }, { label: 'Storage' }]
-            }
-          ],
-          [
-            {
-              label: 'Home Theater',
-              items: [{ label: 'Projector' }, { label: 'Speakers' }, { label: 'TVs' }]
-            }
-          ],
-          [
-            {
-              label: 'Gaming',
-              items: [{ label: 'Accessories' }, { label: 'Console' }, { label: 'PC' }, { label: 'Video Games' }]
-            }
-          ],
-          [
-            {
-              label: 'Appliances',
-              items: [{ label: 'Coffee Machine' }, { label: 'Fridge' }, { label: 'Oven' }, { label: 'Vaccum Cleaner' }, { label: 'Washing Machine' }]
-            }
-          ]
-        ]
+        label: 'Bakery'
       },
       {
         label: 'Pantry'
       },
       {
-        label: 'Frozen Food',
-        items: [
-          [
-            {
-              label: 'Football',
-              items: [{ label: 'Kits' }, { label: 'Shoes' }, { label: 'Shorts' }, { label: 'Training' }]
-            }
-          ],
-          [
-            {
-              label: 'Running',
-              items: [{ label: 'Accessories' }, { label: 'Shoes' }, { label: 'T-Shirts' }, { label: 'Shorts' }]
-            }
-          ],
-          [
-            {
-              label: 'Swimming',
-              items: [{ label: 'Kickboard' }, { label: 'Nose Clip' }, { label: 'Swimsuits' }, { label: 'Paddles' }]
-            }
-          ],
-          [
-            {
-              label: 'Tennis',
-              items: [{ label: 'Balls' }, { label: 'Rackets' }, { label: 'Shoes' }, { label: 'Training' }]
-            }
-          ]
-        ]
+        label: 'Frozen Food'
       },
       {
         label: 'Milk & Drinks'
