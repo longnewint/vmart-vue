@@ -1,117 +1,42 @@
 <template>
   <div class="sticky z-1000">
-  <Banner></Banner>
-  <MegaMenu :model="items" class="z-2000">
-    <template #start>
-      <Button icon="pi pi-shop" label="vMart" ></Button>
-    </template>
-    <template #end>
-      <ModeSwitcherButton></ModeSwitcherButton>
-      <ShoppingCartButton></ShoppingCartButton>
-      <Button>Test</Button>
-    </template>
-  </MegaMenu>
+    <Banner></Banner>
+    <MegaMenu :model="items" class="z-2000">
+      <template #start>
+        <router-link to="/">
+          <Button icon="pi pi-shop" label="vMart"></Button>
+        </router-link>
+      </template>
+      <template #item="{ item, props, hasSubmenu }">
+        <router-link v-if="item.id" v-slot="{ href, navigate }" :to="'/category/' + item.id" custom>
+          <a href="href" v-bind="props.action" @click="navigate" class="font-semibold">
+            <span :class="item.icon" />
+            <span>{{ item.label }}</span>
+          </a>
+        </router-link>
+        <a v-else v-ripple :href="item.url" :target="item.target" v-bind="props.action" class="font-semibold">
+          <span :class="item.icon" />
+          <span>{{ item.label }}</span>
+          <span v-if="hasSubmenu" class="pi pi-fw pi-angle-down" />
+        </a>
+      </template>
+      <template #end>
+        <ModeSwitcherButton></ModeSwitcherButton>
+        <ShoppingCartButton></ShoppingCartButton>
+        <Button>Test</Button>
+      </template>
+    </MegaMenu>
   </div>
 </template>
 <script setup>
 import { ref } from "vue";
+import { CategoryApi } from './../api/CategoryApi';
 
-const items = ref([
-  {
-    label: 'Furniture',
-    icon: 'pi pi-box',
-    items: [
-      [
-        {
-          label: 'Living Room',
-          items: [{ label: 'Accessories' }, { label: 'Armchair' }, { label: 'Coffee Table' }, { label: 'Couch' }, { label: 'TV Stand' }]
-        }
-      ],
-      [
-        {
-          label: 'Kitchen',
-          items: [{ label: 'Bar stool' }, { label: 'Chair' }, { label: 'Table' }]
-        },
-        {
-          label: 'Bathroom',
-          items: [{ label: 'Accessories' }]
-        }
-      ],
-      [
-        {
-          label: 'Bedroom',
-          items: [{ label: 'Bed' }, { label: 'Chaise lounge' }, { label: 'Cupboard' }, { label: 'Dresser' }, { label: 'Wardrobe' }]
-        }
-      ],
-      [
-        {
-          label: 'Office',
-          items: [{ label: 'Bookcase' }, { label: 'Cabinet' }, { label: 'Chair' }, { label: 'Desk' }, { label: 'Executive Chair' }]
-        }
-      ]
-    ]
-  },
-  {
-    label: 'Electronics',
-    icon: 'pi pi-mobile',
-    items: [
-      [
-        {
-          label: 'Computer',
-          items: [{ label: 'Monitor' }, { label: 'Mouse' }, { label: 'Notebook' }, { label: 'Keyboard' }, { label: 'Printer' }, { label: 'Storage' }]
-        }
-      ],
-      [
-        {
-          label: 'Home Theater',
-          items: [{ label: 'Projector' }, { label: 'Speakers' }, { label: 'TVs' }]
-        }
-      ],
-      [
-        {
-          label: 'Gaming',
-          items: [{ label: 'Accessories' }, { label: 'Console' }, { label: 'PC' }, { label: 'Video Games' }]
-        }
-      ],
-      [
-        {
-          label: 'Appliances',
-          items: [{ label: 'Coffee Machine' }, { label: 'Fridge' }, { label: 'Oven' }, { label: 'Vaccum Cleaner' }, { label: 'Washing Machine' }]
-        }
-      ]
-    ]
-  },
-  {
-    label: 'Sports',
-    icon: 'pi pi-clock',
-    items: [
-      [
-        {
-          label: 'Football',
-          items: [{ label: 'Kits' }, { label: 'Shoes' }, { label: 'Shorts' }, { label: 'Training' }]
-        }
-      ],
-      [
-        {
-          label: 'Running',
-          items: [{ label: 'Accessories' }, { label: 'Shoes' }, { label: 'T-Shirts' }, { label: 'Shorts' }]
-        }
-      ],
-      [
-        {
-          label: 'Swimming',
-          items: [{ label: 'Kickboard' }, { label: 'Nose Clip' }, { label: 'Swimsuits' }, { label: 'Paddles' }]
-        }
-      ],
-      [
-        {
-          label: 'Tennis',
-          items: [{ label: 'Balls' }, { label: 'Rackets' }, { label: 'Shoes' }, { label: 'Training' }]
-        }
-      ]
-    ]
-  }
-]);
+const homeButtonProps = defineProps({
+  icon: 'pi pi-shop',
+  title: 'vMart'
+})
+const items = ref(CategoryApi.getCategories());
 
 </script>
 <style scoped></style>
