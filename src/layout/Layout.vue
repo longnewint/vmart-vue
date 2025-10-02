@@ -1,7 +1,16 @@
 <template>
   <Header class="sticky top-0"></Header>
-  <router-view></router-view>
+  <RouterView></RouterView>
+  <li v-for="i in cart.cartItems">{{ i.productName}}</li>
+  <p>{{ cart.orderCount}}</p>
+  <p>{{ cart.orderTotal }}</p>
   <Footer></Footer>
 </template>
 
-<script></script>
+<script setup>
+import { useCartStore } from '../store/CartStore';
+
+
+const cart = useCartStore()
+cart.fetch()
+</script>
