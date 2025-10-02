@@ -6,7 +6,7 @@ export const CategoryApi = {
         items: [
           [
             {
-              items: [{ label: 'Accessories', id: 1 }, { label: 'Armchair', id: 2 }, { label: 'Coffee Table', id: 3 }]
+              items: [{ label: 'Accessories', id: 11 }, { label: 'Armchair', id: 12 }, { label: 'Coffee Table', id: 3 }]
             }
           ],
           [
