@@ -1,6 +1,8 @@
 <template>
-  <Hero></Hero>
-  <div class="flex flex-col">
+  <div class="flex flex-col justify-center">
+    <div>
+      <Hero></Hero>
+    </div>
     <div>
       <Deals></Deals>
     </div>
