@@ -8,3 +8,8 @@
 html {
   font-size: 16;
 }
+
+.card {
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
