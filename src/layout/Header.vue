@@ -23,7 +23,8 @@
       <template #end>
         <ModeSwitcherButton></ModeSwitcherButton>
         <ShoppingCartButton></ShoppingCartButton>
-        <Button>Test</Button>
+        <Button>Dev</Button>
+        
       </template>
     </MegaMenu>
   </div>
