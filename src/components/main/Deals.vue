@@ -1,25 +1,26 @@
 <template>
-  <h1 class="ml-12 mt-3 mb-3 font-semibold text-3xl">Deals of the week</h1>
-  <Carousel :value="products" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions" circular
-    :autoplayInterval="3000">
-    <template #item="slotProps">
-      <div class="border border-surface-200 dark:border-surface-700 rounded m-2  p-4">
-        <div class="mb-4">
-          <div class="relative mx-auto">
-            <img :src="img"
-              :alt="slotProps.data.name" class="w-full rounded" />
+  <div class="card">
+    <h1 class="ml-12 mt-3 mb-3 font-semibold text-3xl">Deals of the week</h1>
+    <Carousel :value="products" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions" circular
+      :autoplayInterval="4000">
+      <template #item="slotProps">
+        <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-3">
+          <div class="mb-4">
+            <div class="relative mx-auto">
+              <img :src="img" :alt="slotProps.data.name" class="w-full rounded" />
+              <div class="absolute" style="right: 4px; top: 4px">
+                <Button icon="pi pi-plus"></Button>
+              </div>
+            </div>
+          </div>
+          <div class="mb-2 font-medium">{{ slotProps.data.name }}</div>
+          <div class="flex justify-between items-center">
+            <div class="mt-0 font-semibold text-xl">${{ slotProps.data.price }}</div>
           </div>
         </div>
-        <div class="mb-4 font-medium">{{ slotProps.data.name }}</div>
-        <div class="flex justify-between items-center">
-          <div class="mt-0 font-semibold text-xl">${{ slotProps.data.price }}</div>
-          <span>
-            <Button icon="pi pi-plus" class="ml-2" />
-          </span>
-        </div>
-      </div>
-    </template>
-  </Carousel>
+      </template>
+    </Carousel>
+  </div>
 </template>
 
 <script setup>
@@ -41,12 +42,12 @@ const responsiveOptions = ref([
   },
   {
     breakpoint: '1199px',
-    numVisible: 3,
+    numVisible: 1,
     numScroll: 1
   },
   {
     breakpoint: '767px',
-    numVisible: 2,
+    numVisible: 1,
     numScroll: 1
   },
   {
