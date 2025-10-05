@@ -2,39 +2,52 @@ export const CategoryApi = {
   getCategories() {
     return [
       {
-        label: 'Product & Protein',
+        label: 'Produce & Protein',
         items: [
           [
             {
-              items: [{ label: 'Accessories', id: 11 }, { label: 'Armchair', id: 12 }, { label: 'Coffee Table', id: 3 }]
-            }
-          ],
-          [
-            {
-              label: 'Kitchen',
-              items: [{ label: 'Bar stool', id: 4 }, { label: 'Chair', id: 5 }, { label: 'Table', id: 6 }]
-            },
-            {
-              label: 'Bathroom',
-              items: [{ label: 'Accessories', id: 7 }]
+              items: [{ label: 'Vegetables', id: 9 },
+                { label: 'Fruits', id: 10 },
+                { label: 'Plant Protein & Tofu', id: 2 }]
             }
           ]
         ]
       },
       {
-        label: 'Bakery'
+        label: 'Bakery',
+        items: [
+          [
+            {
+              items: [{ label: 'Bread', id: 14 },
+                { label: 'Buns & Rolls', id: 15 },
+                { label: 'Tortillas & Flat Breads', id: 16 },
+                { label: 'Cake', id: 17 }]
+            }
+          ]
+        ]
       },
       {
-        label: 'Pantry'
+        label: 'Pantry',
+        items: [
+          [
+            {
+              items: [{ label: 'Bread', id: 14 },
+                { label: 'Buns & Rolls', id: 15 },
+                { label: 'Tortillas & Flat Breads', id: 16 },
+                { label: 'Cake', id: 17 }]
+            }
+          ]
+        ]
       },
       {
-        label: 'Frozen Food'
+        label: 'Frozen Food',
+        id: 4
       },
       {
         label: 'Milk & Drinks'
       },
       {
-        label: 'Snack'
+        label: 'Snacks, Chips & Candy'
       }
     ];
   }
