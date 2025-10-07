@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import PrimeVue from 'primevue/config'
 import Aura from '@primeuix/themes/aura'
 import App from './App.vue'
-import { Button, ButtonGroup, DataView, Dialog } from 'primevue'
+import { Button, ButtonGroup, DataView, Dialog, Step, StepItem, StepList, StepPanel, StepPanels, Stepper } from 'primevue'
 import { Card } from 'primevue'
 import { OverlayBadge } from 'primevue'
 import { MegaMenu } from 'primevue'
@@ -49,6 +49,12 @@ app.component('AccordionContent', AccordionContent)
 app.component('Carousel', Carousel)
 app.component('Dialog', Dialog)
 app.component('DataView', DataView)
+app.component('Stepper', Stepper)
+app.component('StepList', StepList)
+app.component('StepPanels', StepPanels)
+app.component('StepItem', StepItem)
+app.component('Step', Step)
+app.component('StepPanel', StepPanel)
 
 app.component('ModeSwitcherButton', ModeSwitcherButton)
 app.component('ShoppingCartButton', ShoppingCartButton)
