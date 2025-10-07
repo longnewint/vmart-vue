@@ -42,12 +42,14 @@ export const useCartStore = defineStore('cart', () => {
     }
   }
 
-  function add(item: CartItem) {
+  async function add(item: CartItem) {
     let inCart = false
+
     cartItems.value?.forEach(i => {
       if (item.productId === i.productId) {
         inCart = true
         i.quantity++
+        item.quantity = i.quantity
       }
     })
 
@@ -55,13 +57,17 @@ export const useCartStore = defineStore('cart', () => {
       item.quantity = 1
       cartItems.value?.push(item)
     }
+
+    await CartApi.post(item.productId, item.quantity);
   }
 
-  function remove(id: number) {
+  async function remove(id: number) {
     const index = cartItems.value?.findIndex(item => item.productId === id)
 
     if (index !== -1)
       cartItems.value?.splice(index as number, 1)
+
+    await CartApi.post(id, 0);
   }
 
   return { loading, error, orderCount, orderTotal, cartItems, fetchData, add, remove }
