@@ -5,7 +5,7 @@
     variant="outlined" @click="visible = true">
   </Button>
   <div class="flex justify-center">
-    <Dialog v-model:visible="visible" modal header="Cart" :style="{ width: '50vw' }"
+    <Dialog v-model:visible="visible" modal :header="'Total: ' + cart.orderTotal" :style="{ width: '50vw' }"
       :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
       <DataView :value="cart.cartItems">
         <template #list="slotProps">
@@ -20,7 +20,7 @@
                   <div class="flex flex-row md:flex-col justify-between items-start gap-2">
                     <div>
                       <span class="font-medium text-surface-500 dark:text-surface-400 text-sm">{{ item.brand
-                      }}</span>
+                        }}</span>
                       <div class="text-lg font-medium mt-2">{{ item.productName }}</div>
                     </div>
                   </div>
@@ -42,7 +42,9 @@
       </DataView>
       <template #footer>
         <Button label="Cancel" text severity="secondary" @click="visible = false" autofocus />
-        <Button label="Checkout"></Button>
+        <Button asChild v-slot="slotProps">
+          <RouterLink to="/checkout" :class="slotProps.class">Checkout</RouterLink>
+        </Button>
       </template>
     </Dialog>
   </div>
