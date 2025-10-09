@@ -37,6 +37,8 @@ app.use(PrimeVue, {
   }
 })
 
+document.documentElement.classList.toggle('my-app-dark');
+
 app.component('Button', Button)
 app.component('ButtonGroop', ButtonGroup)
 app.component('Card', Card)
