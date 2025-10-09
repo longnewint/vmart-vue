@@ -21,7 +21,6 @@
         </a>
       </template>
       <template #end>
-        <ModeSwitcherButton></ModeSwitcherButton>
         <ShoppingCartButton></ShoppingCartButton>
         <Button>Dev</Button>
         
