@@ -58,7 +58,6 @@ app.component('StepItem', StepItem)
 app.component('Step', Step)
 app.component('StepPanel', StepPanel)
 
-app.component('ModeSwitcherButton', ModeSwitcherButton)
 app.component('ShoppingCartButton', ShoppingCartButton)
 app.component('Banner', Banner)
 app.component('Header', Header)
