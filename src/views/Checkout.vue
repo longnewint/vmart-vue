@@ -1,51 +1,64 @@
 <template>
-  <div class="card">
+  <div class="card flex flex-col justify-center items-center">
     <Stepper value="1">
       <StepItem value="1">
         <Step>Review your Order</Step>
         <StepPanel v-slot="{ activateCallback }">
-          <div class="flex flex-col h-48">
-            <div
-              class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">
-              Content I</div>
-          </div>
-          <div class="py-6">
-            <Button label="Next" @click="toShipping(activateCallback)" />
+          <div class="w-3xl">
+            <div>
+              <ConfirmOrder></ConfirmOrder>
+            </div>
+            <div class="flex p-3 gap-2 justify-end">
+              <Button label="Next" @click="toShipping(activateCallback)" />
+            </div>
+
           </div>
         </StepPanel>
       </StepItem>
       <StepItem value="2">
         <Step>Shipping information</Step>
         <StepPanel v-slot="{ activateCallback }">
-          <div class="flex flex-col h-48">
-            <div
-              class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">
-              Content II</div>
+          <div class="w-3xl">
+            <AddressSelect></AddressSelect>
           </div>
-          <div class="flex py-6 gap-2">
+          <div class="flex p-3 gap-2 justify-end">
             <Button label="Back" severity="secondary" @click="activateCallback('1')" />
-            <Button label="Next" @click="toPayment(activateCallback)" />
+            <div v-if="deliveryStore.selected === null">
+              <Button label="Next" disabled></Button>
+            </div>
+            <div v-else>
+              <Button @click="toPayment(activateCallback)" label="Next"></Button>
+            </div>
           </div>
         </StepPanel>
       </StepItem>
       <StepItem value="3">
         <Step>Payment</Step>
         <StepPanel v-slot="{ activateCallback }">
-          <div class="flex flex-col h-48">
-            <div
-              class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">
-              Content III</div>
+          <div class="w-3xl">
+            <a>Here</a>
           </div>
-          <div class="py-6">
-            <Button label="Back" severity="secondary" @click="activateCallback('2')" />
+          <div class="flex p-3 gap-2 justify-end">
+            <Button label="Back" severity="secondary" @click="activateCallback('1')" />
+            <Button label="Next" @click="toPayment(activateCallback)" />
           </div>
         </StepPanel>
       </StepItem>
     </Stepper>
+    <div class="flex">
+      <Button asChild v-slot="slotProps" severity="secondary">
+        <RouterLink to="/" :class="slotProps.class">Cancel</RouterLink>
+      </Button>
+      <Button label="Checkout"></Button>
+    </div>
   </div>
 </template>
 
 <script setup>
+import { useDeliveryStore } from '../store/DeliveryStore'
+
+
+const deliveryStore = useDeliveryStore()
 
 function toOrder(callback) {
   callback('1')
