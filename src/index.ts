@@ -2,14 +2,13 @@ import { createApp } from 'vue'
 import PrimeVue from 'primevue/config'
 import Aura from '@primeuix/themes/aura'
 import App from './App.vue'
-import { Button, ButtonGroup, DataView, Dialog, Step, StepItem, StepList, StepPanel, StepPanels, Stepper } from 'primevue'
+import { Button, ButtonGroup, DataView, Dialog, IftaLabel, InputText, Message, RadioButton, RadioButtonGroup, Select, Step, StepItem, StepList, StepPanel, StepPanels, Stepper, Toast, ToastService } from 'primevue'
 import { Card } from 'primevue'
 import { OverlayBadge } from 'primevue'
 import { MegaMenu } from 'primevue'
 import { Accordion, AccordionPanel, AccordionHeader, AccordionContent } from 'primevue'
 import { Carousel } from 'primevue'
 
-import ModeSwitcherButton from './components/header/ModeSwitcherButton.vue'
 import ShoppingCartButton from './components/header/ShoppingCartButton.vue'
 import Banner from './components/header/Banner.vue'
 
@@ -25,6 +24,10 @@ import 'primeicons/primeicons.css'
 
 import router from './router'
 import { createPinia } from 'pinia'
+import ConfirmOrder from './components/checkout/ConfirmOrder.vue'
+import AddressSelect from './components/checkout/AddressSelect.vue'
+import { Form } from '@primevue/forms'
+import AddressForm from './components/checkout/AddressForm.vue'
 
 const app = createApp(App)
 app.use(PrimeVue, {
@@ -51,12 +54,22 @@ app.component('AccordionContent', AccordionContent)
 app.component('Carousel', Carousel)
 app.component('Dialog', Dialog)
 app.component('DataView', DataView)
+
 app.component('Stepper', Stepper)
 app.component('StepList', StepList)
 app.component('StepPanels', StepPanels)
 app.component('StepItem', StepItem)
 app.component('Step', Step)
 app.component('StepPanel', StepPanel)
+
+app.component('Toast', Toast)
+app.component('Form', Form)
+app.component('RadioButton', RadioButton)
+app.component('RadioButtonGroup', RadioButtonGroup)
+app.component('InputText', InputText)
+app.component('IftaLabel', IftaLabel)
+app.component('Select', Select)
+app.component('Message', Message)
 
 app.component('ShoppingCartButton', ShoppingCartButton)
 app.component('Banner', Banner)
@@ -67,6 +80,10 @@ app.component('Deals', Deals)
 
 app.component('Footer', Footer)
 
+app.component('ConfirmOrder', ConfirmOrder)
+app.component('AddressSelect', AddressSelect)
+app.component('AddressForm', AddressForm)
+
 // Router config
 app.use(router)
 
@@ -74,5 +91,6 @@ app.use(router)
 const pinia = createPinia()
 app.use(pinia)
 
+app.use(ToastService)
 
 app.mount("#root")
