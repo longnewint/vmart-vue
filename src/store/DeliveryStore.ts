@@ -2,7 +2,6 @@ import { defineStore } from "pinia"
 import { ref } from "vue"
 import { DeliveryApi } from "../api/DeliveryApi"
 
-
 export type Address = {
   addressId: number
   unitNumber: number
@@ -33,5 +32,12 @@ export const useDeliveryStore = defineStore('deliveryStore', () => {
     }
   }
 
-  return { loading, error, addresses, selected, fetchData }
+  async function add(address: Address) {
+    const a_id = await DeliveryApi.post(12321, address) as number
+    address.addressId = a_id
+
+    addresses.value?.push(address)
+  }
+
+  return { loading, error, addresses, selected, fetchData, add }
 })

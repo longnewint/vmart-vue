@@ -42,9 +42,7 @@ export const useOrderStore = defineStore('orderStore', () => {
   const error = ref()
   let orders = ref<Order[] | null>(null)
 
-  const orderDetail = ref<OrderDetail | null>()
-
-  
+  const orderDetail = ref<OrderDetail | null>() 
 
   async function fetchData() {
     error.value = orders.value = null

@@ -3,6 +3,8 @@ import Layout from './../layout/Layout.vue'
 import Home from "../views/Home.vue"
 import Category from "../views/Category.vue"
 import Checkout from "../views/Checkout.vue"
+import Order from "../views/Order.vue"
+import Favorites from "../views/Favorites.vue"
 
 const routes = [
   {
@@ -16,7 +18,15 @@ const routes = [
       {
         path: '/category/:id',
         component: Category
-      }
+      },
+      {
+        path: '/order',
+        component: Order
+      },
+      {
+        path: '/favorites',
+        component: Favorites
+      },
     ]
   },
   {

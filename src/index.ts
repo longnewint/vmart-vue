@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import PrimeVue from 'primevue/config'
 import Aura from '@primeuix/themes/aura'
 import App from './App.vue'
-import { Button, ButtonGroup, DataView, Dialog, IftaLabel, InputText, Message, RadioButton, RadioButtonGroup, Select, Step, StepItem, StepList, StepPanel, StepPanels, Stepper, Toast, ToastService } from 'primevue'
+import { Button, ButtonGroup, Column, ColumnGroup, DataTable, DataView, Dialog, IftaLabel, InputText, Message, RadioButton, RadioButtonGroup, Row, Select, SplitButton, Step, StepItem, StepList, StepPanel, StepPanels, Stepper, Toast, ToastService } from 'primevue'
 import { Card } from 'primevue'
 import { OverlayBadge } from 'primevue'
 import { MegaMenu } from 'primevue'
@@ -28,6 +28,8 @@ import ConfirmOrder from './components/checkout/ConfirmOrder.vue'
 import AddressSelect from './components/checkout/AddressSelect.vue'
 import { Form } from '@primevue/forms'
 import AddressForm from './components/checkout/AddressForm.vue'
+import PaymentSelect from './components/checkout/PaymentSelect.vue'
+import PaymentForm from './components/checkout/PaymentForm.vue'
 
 const app = createApp(App)
 app.use(PrimeVue, {
@@ -54,6 +56,12 @@ app.component('AccordionContent', AccordionContent)
 app.component('Carousel', Carousel)
 app.component('Dialog', Dialog)
 app.component('DataView', DataView)
+app.component('SplitButton', SplitButton)
+
+app.component('DataTable', DataTable)
+app.component('Column', Column)
+app.component('ColumnGroup', ColumnGroup)
+app.component('Row', Row)
 
 app.component('Stepper', Stepper)
 app.component('StepList', StepList)
@@ -83,6 +91,8 @@ app.component('Footer', Footer)
 app.component('ConfirmOrder', ConfirmOrder)
 app.component('AddressSelect', AddressSelect)
 app.component('AddressForm', AddressForm)
+app.component('PaymentSelect', PaymentSelect)
+app.component('PaymentForm', PaymentForm)
 
 // Router config
 app.use(router)

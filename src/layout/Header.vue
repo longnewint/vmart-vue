@@ -22,8 +22,8 @@
       </template>
       <template #end>
         <ShoppingCartButton></ShoppingCartButton>
-        <Button>Dev</Button>
-        
+        <SplitButton label="Dev" @click="save" :model="accountItems" outlined></SplitButton>
+
       </template>
     </MegaMenu>
   </div>
@@ -31,6 +31,7 @@
 <script setup>
 import { ref } from "vue";
 import { CategoryApi } from './../api/CategoryApi';
+import { useRouter } from "vue-router";
 
 const homeButtonProps = defineProps({
   icon: 'pi pi-shop',
@@ -38,5 +39,25 @@ const homeButtonProps = defineProps({
 })
 const items = ref(CategoryApi.getCategories());
 
+const router = useRouter()
+
+const accountItems = [
+  {
+    label: 'Order',
+    command: () => {
+      router.push({ path: '/order' })
+    }
+  },
+  {
+    label: 'Favorites',
+    command: () => {
+      router.push({ path: '/favorites' })
+    }
+  }
+];
+
+const save = () => {
+  toast.add({ severity: 'success', summary: 'Success', detail: 'Data Saved', life: 3000 });
+};
 </script>
 <style scoped></style>

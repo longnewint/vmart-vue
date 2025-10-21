@@ -1,4 +1,5 @@
 <template>
+  <Toast></Toast>
   <div class="card flex flex-col justify-center items-center">
     <Stepper value="1">
       <StepItem value="1">
@@ -36,29 +37,36 @@
         <Step>Payment</Step>
         <StepPanel v-slot="{ activateCallback }">
           <div class="w-3xl">
-            <a>Here</a>
+            <PaymentSelect></PaymentSelect>
           </div>
           <div class="flex p-3 gap-2 justify-end">
-            <Button label="Back" severity="secondary" @click="activateCallback('1')" />
-            <Button label="Next" @click="toPayment(activateCallback)" />
+            <Button label="Back" severity="secondary" @click="toShipping(activateCallback)" />
           </div>
         </StepPanel>
       </StepItem>
     </Stepper>
     <div class="flex">
-      <Button asChild v-slot="slotProps" severity="secondary">
-        <RouterLink to="/" :class="slotProps.class">Cancel</RouterLink>
-      </Button>
-      <Button label="Checkout"></Button>
+      <div>
+        <Button asChild v-slot="slotProps" severity="secondary">
+          <RouterLink to="/" :class="slotProps.class">Cancel</RouterLink>
+        </Button>
+      </div>
+      <div v-if="deliveryStore.selected === null || paymentStore.selected === null">        
+        <Button label="Place Order" disabled></Button>
+      </div>
+      <div v-else>
+        <Button label="Place Order"></Button>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { useDeliveryStore } from '../store/DeliveryStore'
-
+import { usePaymentStore } from '../store/PaymentStore'
 
 const deliveryStore = useDeliveryStore()
+const paymentStore = usePaymentStore()
 
 function toOrder(callback) {
   callback('1')
