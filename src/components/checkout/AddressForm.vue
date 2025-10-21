@@ -1,5 +1,4 @@
 <template>
-  <Toast></Toast>
   <Form v-slot="$form" :initialValues :resolver :validateOnValueUpdate="true" :validateOnBlur="true"
     @submit="onFormSubmit" class="flex flex-col gap-4">
     <div class="flex flex-col justify-start">
@@ -25,7 +24,7 @@
             $form.city.error.message }}</Message>
         </iftaLabel>
         <iftaLabel class="w-2/7">
-          <Select name="province" :options="provinces" optionLabel="code" fluid></Select>
+          <Select name="province" :options="provinces" optionLabel="code" optionValue="code" class="w-full"></Select>
           <label for="province">Province</label>
           <Message v-if="$form.province?.invalid" severity="error" size="small" variant="simple">{{
             $form.province.error.message }}</Message>
@@ -48,10 +47,9 @@
 
 <script setup>
 import { ref } from 'vue';
-import { useToast } from 'primevue/usetoast';
+import { useDeliveryStore } from '../../store/DeliveryStore';
 
-const toast = useToast();
-
+const addressStore = useDeliveryStore()
 const emit = defineEmits(['addressAdded'])
 
 const initialValues = ref({
@@ -102,9 +100,17 @@ const resolver = ({ values }) => {
   };
 };
 
-const onFormSubmit = ({ valid }) => {
-  if (valid) {
-    toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 })
+const onFormSubmit = ( e ) => {
+  if (e.valid) {
+    const s = e.states
+    const newAddress = {
+      streetNumber: s.streetNumber.value, 
+      addressLine1: s.addressLine.value,
+      city: s.city.value,
+      province: s.province.value,
+      postalCode: s.postalCode.value
+    }
+    addressStore.add(newAddress)
     emit('addressAdded', 'New Address is added')
   }
 }
