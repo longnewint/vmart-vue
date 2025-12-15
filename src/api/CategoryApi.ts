@@ -44,10 +44,12 @@ export const CategoryApi = {
         id: 4
       },
       {
-        label: 'Milk & Drinks'
+        label: 'Milk & Drinks',
+        id: 4
       },
       {
-        label: 'Snacks, Chips & Candy'
+        label: 'Snacks, Chips & Candy',
+        id: 8
       }
     ];
   }
