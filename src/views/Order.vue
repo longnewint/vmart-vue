@@ -4,6 +4,7 @@
       <template #header>
         <div class="flex flex-wrap items-center justify-between gap-2">
           <a class="text-xl font-bold">Orders</a>
+          <Button icon="pi pi-refresh" rounded raised />
         </div>
       </template>
       <Column field="storeName" header="Store"></Column>
@@ -43,13 +44,8 @@
   <div v-if="orderStore.orderDetail">
   <Dialog v-model:visible="visible" modal header="Order details" :style="{ width: '50vw' }"
     :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
+    <p>{{ orderStore.order.orderTotal }}</p>
     <DataTable :value="orderStore.orderDetail.items" tableStyle="min-width: 50rem">
-      <template #header>
-        <div class="flex flex-wrap items-center justify-between gap-2">
-          <span class="text-xl font-bold"></span>
-          <Button icon="pi pi-refresh" rounded raised />
-        </div>
-      </template>
       <Column field="productName" header="Name">
         <template #body="slotProps">
           {{ slotProps.data.productName }}
@@ -80,8 +76,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import { useOrderStore } from "../store/useOrderStore";
-import { shippingMethodValue, orderStatusValue } from '../store/OrderStore';
+import { shippingMethodValue, orderStatusValue, useOrderStore } from '../store/OrderStore';
 import img from './../assets/no_image_available.webp'
 
 const orderStore = useOrderStore()
@@ -92,6 +87,7 @@ onMounted(() => {
 })
 
 function toggle(orderId) {
+  orderStore.chooseOrder(orderId)
   orderStore.fetchOrder(orderId)
   visible.value = true
 }
