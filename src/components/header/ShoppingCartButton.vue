@@ -1,13 +1,19 @@
 <template>
 
-  <Button :label="cart.orderTotal" variant="outlined" severity="contrast"></Button>
+  <Button :label="'$' + cart.orderTotal.toString()" variant="outlined" severity="contrast"></Button>
   <Button type="button" icon="pi pi-shopping-cart" :badge="cart.orderCount" severity="contrast" badgeSeverity="contrast"
     variant="outlined" @click="visible = true">
   </Button>
   <div class="flex justify-center">
-    <Dialog v-model:visible="visible" modal :header="'Total: ' + cart.orderTotal" :style="{ width: '50vw' }"
+    <Dialog v-model:visible="visible" modal header="Your shopping cart" :style="{ width: '50vw' }"
       :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
       <DataView :value="cart.cartItems">
+        <template #header>
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <a class="text-xl font-bold">{{ "Total: " + cart.orderTotal }}</a>
+            <Button icon="pi pi-refresh" rounded raised @click="cart.fetchData"/>
+          </div>
+        </template>
         <template #list="slotProps">
           <div class="flex flex-col">
             <div v-for="(item, index) in slotProps.items" :key="index">
@@ -20,7 +26,7 @@
                   <div class="flex flex-row md:flex-col justify-between items-start gap-2">
                     <div>
                       <span class="font-medium text-surface-500 dark:text-surface-400 text-sm">{{ item.brand
-                        }}</span>
+                      }}</span>
                       <div class="text-lg font-medium mt-2">{{ item.productName }}</div>
                     </div>
                   </div>
