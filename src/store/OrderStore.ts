@@ -42,7 +42,15 @@ export const useOrderStore = defineStore('orderStore', () => {
   const error = ref()
   let orders = ref<Order[] | null>(null)
 
-  const orderDetail = ref<OrderDetail | null>() 
+  const order = ref<Order | null>()
+  const orderDetail = ref<OrderDetail | null>()
+
+  function chooseOrder(id: number) {
+    const index = orders.value?.findIndex(o => o.orderId === id)
+
+    if(index !== -1 && index !== undefined && orders.value)
+      order.value = orders.value[index] as Order
+  }
 
   async function fetchData() {
     error.value = orders.value = null
@@ -71,5 +79,5 @@ export const useOrderStore = defineStore('orderStore', () => {
   }
 
 
-  return { loading, error, orders, orderDetail, fetchData, fetchOrder }
+  return { loading, error, orders, order, orderDetail, chooseOrder, fetchData, fetchOrder }
 })
