@@ -47,9 +47,7 @@
     </Stepper>
     <div class="flex">
       <div>
-        <Button asChild v-slot="slotProps" severity="secondary">
-          <RouterLink to="/" :class="slotProps.class">Cancel</RouterLink>
-        </Button>
+        <Button label="Cancel" severity="secondary" @click="cancelCheckout"></Button>
       </div>
       <div v-if="deliveryStore.selected === null || paymentStore.selected === null">        
         <Button label="Place Order" disabled></Button>
@@ -62,11 +60,14 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'
 import { useDeliveryStore } from '../store/DeliveryStore'
 import { usePaymentStore } from '../store/PaymentStore'
 
 const deliveryStore = useDeliveryStore()
 const paymentStore = usePaymentStore()
+
+const router = useRouter()
 
 function toOrder(callback) {
   callback('1')
@@ -78,5 +79,11 @@ function toShipping(callback) {
 
 function toPayment(callback) {
   callback('3')
+}
+
+function cancelCheckout() {
+  deliveryStore.selected = null
+  paymentStore.selected = null
+  router.push({ path: '/' })
 }
 </script>
