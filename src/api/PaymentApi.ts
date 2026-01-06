@@ -1,13 +1,14 @@
 import ky from "ky"
+import { ApiConfig } from "./ApiConfig"
 import type { PaymentForm } from "../store/PaymentStore"
 
 export const PaymentApi = {
   get(customerId: number) {
-    return ky.get("http://localhost:8080/payment/").json()
+    return ky.get(ApiConfig.urlPath + "/payment/").json()
   },
 
   post(customerId: number, payment: PaymentForm) {
-    return ky.post("http://localhost:8080/payment/", {
+    return ky.post(ApiConfig.urlPath + "/payment/", {
       json: {
         paymentTypeId: payment.paymentTypeId,
         cardNumber: payment.cardNumber,
