@@ -4,7 +4,7 @@
       <template #header>
         <div class="flex flex-wrap items-center justify-between gap-2">
           <a class="text-xl font-bold">Orders</a>
-          <Button icon="pi pi-refresh" rounded raised />
+          <Button icon="pi pi-refresh" rounded raised @click="orderStore.fetchData()" />
         </div>
       </template>
       <Column field="storeName" header="Store"></Column>
@@ -22,13 +22,13 @@
       <Column field="orderStatusId" header="Status">
         <template #body="slotProps">
           <div class="flex items-center">
-            <div v-if="slotProps.data.orderStatusId === 4">
+            <div>
               <Button :label="orderStatusValue[slotProps.data.orderStatusId]" variant="text"></Button>
             </div>
-            <div v-else>
-              <Button :label="orderStatusValue[slotProps.data.orderStatusId]" variant="text"
-                severity="secondary"></Button>
-              <Button label="Complete"></Button>
+            <div v-if="slotProps.data.orderStatusId !== 4">
+              <Button label="Complete"
+                @click="updateStatus(4, slotProps.data.orderId)">
+              </Button>
             </div>
           </div>
         </template>
@@ -42,35 +42,35 @@
     </DataTable>
   </div>
   <div v-if="orderStore.orderDetail">
-  <Dialog v-model:visible="visible" modal header="Order details" :style="{ width: '50vw' }"
-    :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
-    <p>{{ orderStore.order.orderTotal }}</p>
-    <DataTable :value="orderStore.orderDetail.items" tableStyle="min-width: 50rem">
-      <Column field="productName" header="Name">
-        <template #body="slotProps">
-          {{ slotProps.data.productName }}
-        </template>
-      </Column>
-      <Column header="Image">
-        <template #body="slotProps">
-          <img :src="img" :alt="slotProps.data.thumbnailUrl" class="w-24 rounded" />
-        </template>
-      </Column>
-      <Column field="listPrice" header="Price">
-        <template #body="slotProps">
-          {{ slotProps.data.listPrice }}
-        </template>
-      </Column>
-      <Column field="quantity" header="Qty">
-        <template #body="slotProps">
-          {{ slotProps.data.quantity }}
-        </template>
-      </Column>
-    </DataTable>
-    <template #footer>
-      <Button label="Cancel" text severity="secondary" @click="visible = false" autofocus />
-    </template>
-  </Dialog>
+    <Dialog v-model:visible="visible" modal header="Order details" :style="{ width: '50vw' }"
+      :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
+      <p>{{ orderStore.order.orderTotal }}</p>
+      <DataTable :value="orderStore.orderDetail.items" tableStyle="min-width: 50rem">
+        <Column field="productName" header="Name">
+          <template #body="slotProps">
+            {{ slotProps.data.productName }}
+          </template>
+        </Column>
+        <Column header="Image">
+          <template #body="slotProps">
+            <img :src="img" :alt="slotProps.data.thumbnailUrl" class="w-24 rounded" />
+          </template>
+        </Column>
+        <Column field="listPrice" header="Price">
+          <template #body="slotProps">
+            {{ slotProps.data.listPrice }}
+          </template>
+        </Column>
+        <Column field="quantity" header="Qty">
+          <template #body="slotProps">
+            {{ slotProps.data.quantity }}
+          </template>
+        </Column>
+      </DataTable>
+      <template #footer>
+        <Button label="Cancel" text severity="secondary" @click="visible = false" autofocus />
+      </template>
+    </Dialog>
   </div>
 </template>
 
@@ -85,6 +85,10 @@ const visible = ref(false)
 onMounted(() => {
   orderStore.fetchData()
 })
+
+function updateStatus(statusId, orderId) {
+  orderStore.updateStatus(statusId, orderId)
+}
 
 function toggle(orderId) {
   orderStore.chooseOrder(orderId)
