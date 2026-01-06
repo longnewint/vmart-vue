@@ -8,7 +8,7 @@ export type Order = {
   shippingMethodId: number
   orderDate: number
   orderTotal: number
-  orderStatusId: string
+  orderStatusId: number
 }
 
 export type OrderItem = {
@@ -78,6 +78,14 @@ export const useOrderStore = defineStore('orderStore', () => {
     }
   }
 
+  async function updateStatus(statusId: number, orderId: number) {
+    orders.value?.forEach(o => {
+      if (o.orderId === orderId) {
+        o.orderStatusId = statusId
+        OrderApi.updateStatus(statusId, orderId)
+      }
+    })
+  }
 
-  return { loading, error, orders, order, orderDetail, chooseOrder, fetchData, fetchOrder }
+  return { loading, error, orders, order, orderDetail, chooseOrder, fetchData, fetchOrder, updateStatus }
 })
