@@ -4,7 +4,7 @@
     <MegaMenu :model="items" class="z-2000">
       <template #start>
         <RouterLink to="/">
-          <Button icon="pi pi-shop" label="vMart"></Button>
+          <Button icon="pi pi-shop" label="jjMart"></Button>
         </RouterLink>
       </template>
       <template #item="{ item, props, hasSubmenu }">
