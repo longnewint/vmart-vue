@@ -9,6 +9,18 @@ export const OrderApi = {
   getById(id: number) {
     return ky.get(ApiConfig.urlPath + "/order/" + id).json()
   },
+  
+  placeOrder(storeId: number, cartId: number, shippingMethodId: number, addressId: number, paymentId: number) {
+    return ky.post(ApiConfig.urlPath + "/order/", {
+      json: {
+        storeId: 101,
+        cartId: 1234321,
+        shippingMethodId: shippingMethodId,
+        addressId: addressId,
+        paymentId: paymentId
+      }
+    }).json()
+  },
 
   updateStatus(statusId: number, orderIdtt: number) {
     return ky.post(ApiConfig.urlPath + "/order/status", {
