@@ -98,7 +98,8 @@ const onFormSubmit = ( e ) => {
       expYear: s.expYear.value,
       cvv: s.cvv.value
     }
-    //paymentStore.add(newPayment)
+
+    paymentStore.add(newPayment)
     emit('paymentAdded', 'New Payment is added')
   }
 }
