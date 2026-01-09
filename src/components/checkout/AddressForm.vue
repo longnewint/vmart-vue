@@ -110,6 +110,7 @@ const onFormSubmit = ( e ) => {
       province: s.province.value,
       postalCode: s.postalCode.value
     }
+
     addressStore.add(newAddress)
     emit('addressAdded', 'New Address is added')
   }
