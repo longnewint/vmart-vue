@@ -53,7 +53,7 @@
         <Button label="Place Order" disabled></Button>
       </div>
       <div v-else>
-        <Button label="Place Order"></Button>
+        <Button label="Place Order" @click="checkout"></Button>
       </div>
     </div>
   </div>
@@ -61,9 +61,12 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { useOrderStore } from '../store/OrderStore'
+import { useCartStore } from '../store/CartStore'
 import { useDeliveryStore } from '../store/DeliveryStore'
 import { usePaymentStore } from '../store/PaymentStore'
 
+const cartStore = useCartStore()
 const deliveryStore = useDeliveryStore()
 const paymentStore = usePaymentStore()
 
@@ -82,6 +85,13 @@ function toPayment(callback) {
 }
 
 function cancelCheckout() {
+  deliveryStore.selected = null
+  paymentStore.selected = null
+  router.push({ path: '/' })
+}
+
+function checkout() {
+  cartStore.cartItems = null
   deliveryStore.selected = null
   paymentStore.selected = null
   router.push({ path: '/' })
