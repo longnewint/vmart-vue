@@ -13,8 +13,8 @@ export const OrderApi = {
   placeOrder(storeId: number, cartId: number, shippingMethodId: number, addressId: number, paymentId: number) {
     return ky.post(ApiConfig.urlPath + "/order/", {
       json: {
-        storeId: 101,
-        cartId: 1234321,
+        storeId: storeId,
+        cartId: cartId,
         shippingMethodId: shippingMethodId,
         addressId: addressId,
         paymentId: paymentId
